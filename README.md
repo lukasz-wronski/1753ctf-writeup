@@ -20,6 +20,11 @@
 - [Wyciek](#wyciek)
 - [Gildia internetowych troli](#gildia-internetowych-troli)
 
+### MISC
+
+- [Śmieszna maupa](#śmieszna-maupa)
+- [Śmieszne zagadki](#śmieszne-zagadki)
+
 ## Crypto
 
 ### Szymfr
@@ -590,3 +595,12 @@ Dzięki niemu w folderze dump odtworzone zostanie repozytorium o które nam chod
 ```bash
 git log -p -- index.html
 ```
+## MISC
+
+### Śmieszna maupa
+
+Naszym oczom ukazuje się strona z wbudowanym viewerem plików 3d. Na ekranie śmieszna maupa. Zaglądamy w źródło i widzimy między innymi plik z modelem maupy dostępny pod adresem https://1753ctf.ams3.digitaloceanspaces.com/m/monki.glb
+
+Tutaj do akcji wkracza Blender. Importujemy plik glb, otwieramy i usuwamy kolejne obiekty. Okazuje się, że w postumencie schowany był trójwymiary model z tekstem zawierającym flagę. 
+
+### Śmieszne zagadki
