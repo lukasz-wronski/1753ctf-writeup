@@ -599,8 +599,14 @@ git log -p -- index.html
 
 ### Śmieszna maupa
 
-Naszym oczom ukazuje się strona z wbudowanym viewerem plików 3d. Na ekranie śmieszna maupa. Zaglądamy w źródło i widzimy między innymi plik z modelem maupy dostępny pod adresem https://1753ctf.ams3.digitaloceanspaces.com/m/monki.glb
+Naszym oczom ukazuje się strona z wbudowanym viewerem plików 3d. Na ekranie śmieszna maupa:
+
+<img src="img/maupa.png?raw=true" width="400px" />
+
+Zaglądamy w źródło i widzimy między innymi plik z modelem maupy dostępny pod adresem https://1753ctf.ams3.digitaloceanspaces.com/m/monki.glb
 
 Tutaj do akcji wkracza Blender. Importujemy plik glb, otwieramy i usuwamy kolejne obiekty. Okazuje się, że w postumencie schowany był trójwymiary model z tekstem zawierającym flagę. 
 
 ### Śmieszne zagadki
+
+
