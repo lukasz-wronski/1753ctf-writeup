@@ -355,3 +355,29 @@ Wpisujemy url http://165.232.88.198/?page=/etc/passwd i oczom naszym ukazuje si�
 
 <img src="img/etcpasswd.png?raw=true" width="400px" />
 
+Nie wiemy jednak w jakim pliku znajduje się flaga. Przyda nam się eskalacja z LFI do RCE. Zajrzyjmy do kolejnej sekcji, czyli kontakt. Możemy wysłać wiadomość, ale dostajemy kolejny błąd:
+
+```
+Warning: Can't attach data from file: data/6224c784be7b1.txt in /var/www/html/index.php on line 12
+```
+
+Plik wskazany w błędzie możemy normalnie otworzyć w przeglądarce i zawiera on naszą wiadomość. Znaczy to, że możemy dowolny plik tekstowy zapisać na serwerze, a potem przy pomocy parametru page podać go do funkcji include i wykonać dowolny kod w języku PHP. Sprawdźmy więc jakie pliki znajdują się w folderze aplikacji przy pomocy kodu:
+
+```php
+<?php echo `ls` ?>
+```
+
+który w moim przypadku zapisał się do pliku data/6224c8296dab5.txt i wywołując nasz remote file inclusion wpisując adres http://165.232.88.198/?page=data/6224c8296dab5.txt dostajemy remote code execution i listę plików na serwerze:
+
+```
+data
+home.html
+index.php
+kontakt.html
+logo.png
+onas.html
+this_is_the_file_containg_our_flag.txt
+zespol.html
+```
+
+z czego oczywiście jeden z plików zawiera naszą flagę. Wywołując podobny fragment kodu php jak poprzednio, ale używając cata możemy odczytać zawartość pliku this_is_the_file_containing_our_flag.txt i otrzymać flagę.
