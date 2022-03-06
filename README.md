@@ -4,6 +4,16 @@
 - [Szymfr](#szymfr)
 - [Scrypto](#scrypto)
 
+### OSINT
+
+- [Jak zostałem hakerem](#jak-zostałem-hakerem)
+- [Sekrecik](#sekrecik)
+
+### PWN
+
+- [Egzamin z angielskiego](#egzamin-z-angielskiego)
+- [Kontrola umysłu](#kontrola-umyslu)
+
 ## Crypto
 
 ### Szymfr
@@ -121,3 +131,35 @@ for (let e = 0; e < n.length; e++) {
 
 console.log(String.fromCharCode(...n));
 ```
+
+## OSINT
+
+### Jak zostałem hakerem
+
+Wyszukać trzeba było z jakiego filmiku na YT pochodzi ten screenshot:
+
+<img src="img/img.png?raw=true" width="400px" />
+
+Podpowiedziałem trochę na swojej prezentacji pokazująć inny screenshot z tej samej prelekcji Samyego Kamkara. Wyszukiwanie obrazem w Google nie okazało się zbyt pomocne, ale wpisanie kawałka kodu z obrazka do Google już tak:
+
+<img src="img/himyg.png?raw=true" width="400px" />
+
+Wyszukanie właściwej prelekcji na YouTube to już tylko chwila, a w komentarzach znajdziemy taki w którym Dawid, którego z tego miejsca serdecznie pozdrawiam, opublikował flagę do tego zadania. 
+
+### Sekrecik
+
+To zadanie podobno spędzało Wam sen z powiek, a rozwiązanie jest raczej dość szybkie. Jak widać podany w zadaniu URL sekrecik.1753ctf.pl nie prowadzi raczej do nikąd. Niektórzy pytali nawet czy zadanie nie umarło, ale nie. Ta subdomena faktycznie nie jest nigdzie wpięta, co powie Wam np. komenda ping:
+
+```
+> ping sekrecik.1753ctf.pl
+ping: cannot resolve sekrecik.1753ctf.pl: Unknown host
+```
+
+Oczywiście komenda ping odpowiada nam, że nie zna hosta, bo taką odpowiedź dostała z serwera DNS. Ale DNS to nie tylko rekordy wskazujące na to gdzie powinna przekierować nas przeglądarka. Zajrzyjmy więc do rekordów DNS dla sekrecik.1753ctf.pl, listując np. klucze typu TXT które z założenia zawierają dodatkowe informacje:
+
+```
+> host -t txt sekrecik.1753ctf.pl
+sekrecik.1753ctf.pl descriptive text "MTc1M2N7c2lrYW1fbmFfc2llZHphY299"
+```
+
+Viola! Otrzymany text to flaga zdradzająca dosyć wstydliwy sekret autora zadania zakodowana przy pomocy Base64!
