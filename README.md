@@ -1,5 +1,9 @@
 # 1753c - Warmup
 
+### Crypto
+- [Szymfr](#szymfr)
+- [Scrypto](#scrypto)
+
 ## Crypto
 
 ### Szymfr
