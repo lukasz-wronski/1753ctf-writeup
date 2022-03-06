@@ -627,3 +627,4 @@ Odpowiedzi 7, 3, 1, 6, 9, 8, 6, 3, 1... Razem tworzą liczbę która wygląda ja
 
 Tajny szyfr na końcu wiadomości to heksadecymalnie zapisana flaga.
 
+### Dziękuję bardzo wszystkim za uczestnictwo!
