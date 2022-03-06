@@ -609,4 +609,21 @@ Tutaj do akcji wkracza Blender. Importujemy plik glb, otwieramy i usuwamy kolejn
 
 ### Śmieszne zagadki
 
+Zadanie traktuje nas serią pytań:
+
+> Ilu było krasnoludków? 
+> A zasad dynamiki newtona? 
+> Która liczba jest większa, 1 czy -1? 
+> Ilu muzyków liczy sekstet? 
+> Ile pierścieni władzy trafiło w ręce ludzi? 
+> Którym pasażerem był na Nostromo obcy? 
+> Jaką liczbę atomową ma to co czyni związki organicznymi? 
+> Ile koron jest w pieninach? 
+> A jaką liczbą wybierzemy drugi element tablicy w języku JavaScript?
+
+Odpowiedzi 7, 3, 1, 6, 9, 8, 6, 3, 1... Razem tworzą liczbę która wygląda jakby.. czyżby to był numer telefonu? Jak to sprawdzić? Trochę głupio dzwonić o drugiej w nocy pod losowe numery, ale w końcu decydujemy się na to, a tam? Fotowoltaika!
+
+> Dodzwonili się Państwo do firmy Twoja Fotowoltaika na Twoim Dachu Spółka Akcyjna z Ograniczoną Odpowiedzialnością. Państwa dane przetwarzane są zgodnie z RODO. Nasza infolinia czynna jest w dni robocze o godzinie 17:53. Zapraszamy do kontaktu w godzinach urzędowania infolinii. 31 37 35 33 63 7b 73 6f 62 69 65 5f 72 61 79 7d
+
+Tajny szyfr na końcu wiadomości to heksadecymalnie zapisana flaga.
 
