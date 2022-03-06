@@ -14,6 +14,12 @@
 - [Egzamin z angielskiego](#egzamin-z-angielskiego)
 - [Kontrola umysłu](#kontrola-umysłu)
 
+### Web
+
+- [Klikzarzutka](#klikzarzutka)
+- [Wyciek](#wyciek)
+- [Gildia internetowych troli](#gildia-internetowych-troli)
+
 ## Crypto
 
 ### Szymfr
@@ -248,9 +254,40 @@ Zgadnij jaką liczbę pomyślałem?
 Zgaduj, a nie licz... zbyt wolno!
 ```
 
-Na szczęście do zadania dołączony jest kod źródłowy w języku Python. Już na pierwszy rzut oka widzimy ciekawą zależność. Podawany nam numer gry jest jednocześnie wartością która inicjalizuje generator liczb pseudolosowych. Znając więc ten numer (a jest on nam podawany) możemy łatwo przewidzieć jaką liczbę pomyślał nasz przeciwnik.
+Na szczęście do zadania dołączony jest kod źródłowy w języku Python:
 
-Pozostaje jedynie problem szybkiego obliczenia i wysłania odpowiedzi. Nie zrobimy tego ręcznie. Drobną podpowiedzią zostawioną w kodzie jest zakomentowany require biblioteki pwntools która do tego celu nada się idealnie.
+```python
+#from pwn import *
+import random
+from datetime import datetime
+
+MAX = 999999
+
+games = range(0, MAX)
+game = random.choice(games)
+
+random.seed(game)
+number = random.randint(0, MAX)
+
+start = datetime.now()
+
+print("Witaj w grze numer " + str(game))
+val = input("Zgadnij jaką liczbę pomyślałem? ")
+
+delta = (datetime.now() - start)
+tooSlow = delta.seconds > 0
+
+if tooSlow:
+    print("Zgaduj, a nie licz... zbyt wolno!")
+elif val == str(number):
+    print("Brawo, 1753c{***********}")
+else:
+    print("No niestety... liczba którą pomyślałem, to " + str(number))
+```
+
+Już na pierwszy rzut oka widzimy ciekawą zależność. Podawany nam numer gry jest jednocześnie wartością która inicjalizuje generator liczb pseudolosowych. Znając więc ten numer (a jest on nam podawany) możemy łatwo przewidzieć jaką liczbę pomyślał nasz przeciwnik.
+
+Pozostaje jedynie problem szybkiego obliczenia i wysłania odpowiedzi. Nie zrobimy tego ręcznie. Drobną podpowiedzią zostawioną w kodzie jest zakomentowany import biblioteki pwntools która do tego celu nada się idealnie.
 
 Kod rozwiązania może wyglądać jak poniżej:
 
@@ -272,3 +309,49 @@ conn.send((str(number) + "\n").encode("utf-8"))
 
 print(conn.recvline().decode("utf-8"))
 ```
+
+## Web
+
+### Klikzarzutka
+
+Naszym oczom ukazuje się strona-wyzwanie. Wystarczy jedyne 10000 kliknięć w captchę i otrzymamy flagę. Podglądając jak pojedynczy request z captchą wygląda w Burpie widzimy, że wołany jest endpoint /nextStep do którego wysyłany jest kod recaptcha oraz wartość code która rośnie wraz z każdym kolejnym kliknięciem:
+
+```http
+POST /nextStep HTTP/2
+Host: us-central1-captcha-master.cloudfunctions.net
+Content-Length: 516
+Sec-Ch-Ua: "(Not(A:Brand";v="8", "Chromium";v="98"
+Sec-Ch-Ua-Mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36
+Sec-Ch-Ua-Platform: "macOS"
+Content-Type: application/json
+Accept: */*
+Origin: https://captcha-master.web.app
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://captcha-master.web.app/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+
+{"data":{"captcha":"03AGdBq25jsL7yuc2e-mfdlzpPClhbCLBWqduhYdug7WFeKR_1AHU8bC9IUx1MkfkA3Fvm6n2_b_6mKiqpS6-6LWZvqv1C1VVjuaenMhSXrdTpU-A16_sqYA1WWFPO0mSoSLiOnjg5JV49fgG_hJBf5XlYtZZ4Nqd5S0y4a3D8PkOY9sgLjmSlQUtsjIp7sYkDOfNycsYJdrO5cKaiVDmvxReNYGFlyzRFJcmrsP9EbKoPuvSd8lEE32U1MtZkS0uOMsh1UJmZrQLjl_3Rp1kiADxlhBEg8_he6p4Rw32XZi03WnYyUaXSakfXua-eX6UmBVEhprtpwjFk-iqof-l6b7RbCkzcqMDbon1InyjwgXbktWyrTQamrL3xvLwvkI4T7e5V5-elXcYV7BClnmktyS1UMLU9GZbe9CZKzzNFy5Lh_5zhXSVjmDKE_sUIQJGdNyEEcXDb1nVgclICMJBDtMSr8UXSi86Y-A","code":0}}
+```
+
+Na szczęście Burp jako narzędzie wspaniałe pozwala na zmianę takich żądań w locie. Wystarczy, że w karcie Proxy zaznaczone mamy "Intercept is on". Szybko łapiemy strzał i podmieniamy wartość parametru code na 9999. Tada! Flaga jest nasza.
+
+### Wyciek
+
+Oto i ona. Nowa strona 1753c. Chyba trochę jeszcze niedopracowana, ale wygląda już świetnie. Niestety jeden z linków nie działa, klikając w Zespół pojawia nam się błąd:
+
+```
+Warning: include(zepsul.html): failed to open stream: No such file or directory in /var/www/html/index.php on line 18
+
+Warning: include(): Failed opening 'zepsul.html' for inclusion (include_path='.:/usr/share/php') in /var/www/html/index.php on line 18
+```
+
+No tak! W linku jest literówka. Błąd podpowiada nam jednak coś jeszcze. Plik wskazany w URLu jest ładowany przy pomocy phpowej funkcji include. Ups. To wygląda na local file inclusion. Sprawdźmy to próbując załączyć plik etc/passwd.
+
+Wpisujemy url http://165.232.88.198/?page=/etc/passwd i oczom naszym ukazuje się taki oto widok:
+
+<img src="img/etcpasswd.png?raw=true" width="400px" />
+
