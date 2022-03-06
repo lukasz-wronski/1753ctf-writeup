@@ -418,3 +418,169 @@ Wynika z niego nie mniej nie więciej to, że ktoś oprócz pliku ze stroną na 
 Można by się pokusić o ręczne pobieranie kolejnych plików, szczególnie jeżeli znamy strukturę plików tego systemu kontroli wersji. Pliki z indeksami zawierają wtedy hashe potrzebne do odgadnięcia nazw plików znajdujących się w folderze objects, zawierających obecne i historyczne wersje plików źródłowych. My jednak skorzystamy z prostszego rozwiązania czyli automatycznego narzędzia git-dumper.
 
 https://github.com/arthaud/git-dumper
+
+Wywołanie jest dosyć proste:
+
+```bash
+> git-dumper https://1753ctf.ams3.digitaloceanspaces.com/g/ dump
+[-] Testing https://1753ctf.ams3.digitaloceanspaces.com/g/.git/HEAD [200]
+[-] Testing https://1753ctf.ams3.digitaloceanspaces.com/g/.git/ [403]
+[-] Fetching common files
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/hooks/post-commit.sample [403]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.gitignore [403]
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.gitignore responded with status code 403
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/hooks/post-commit.sample responded with status code 403
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/hooks/commit-msg.sample [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/hooks/post-receive.sample [403]
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/hooks/post-receive.sample responded with status code 403
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/hooks/pre-applypatch.sample [200]
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/hooks/post-update.sample [200]
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/hooks/pre-receive.sample [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/COMMIT_EDITMSG [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/hooks/pre-commit.sample [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/hooks/applypatch-msg.sample [200]
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/description [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/hooks/update.sample [200]
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/index [200]
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/info/exclude [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/objects/info/packs [403]
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/objects/info/packs responded with status code 403
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/hooks/pre-rebase.sample [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/hooks/prepare-commit-msg.sample [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/hooks/pre-push.sample [200]
+[-] Finding refs/
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/FETCH_HEAD [403]
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/FETCH_HEAD responded with status code 403
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/HEAD [200]
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/ORIG_HEAD [403]
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/ORIG_HEAD responded with status code 403
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/info/refs [403]
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/info/refs responded with status code 403
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/logs/HEAD [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/logs/refs/stash [403]
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/logs/refs/stash responded with status code 403
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/config [200]
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/logs/refs/remotes/origin/HEAD [403]
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/logs/refs/remotes/origin/HEAD responded with status code 403
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/logs/refs/remotes/origin/master [403]
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/logs/refs/remotes/origin/master responded with status code 403
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/logs/refs/heads/master [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/packed-refs [403]
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/packed-refs responded with status code 403
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/refs/remotes/origin/master [403]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/refs/remotes/origin/HEAD [403]
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/refs/remotes/origin/master responded with status code 403
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/refs/remotes/origin/HEAD responded with status code 403
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/refs/heads/master [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/refs/stash [403]
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/refs/stash responded with status code 403
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/refs/wip/wtree/refs/heads/master [403]
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/refs/wip/wtree/refs/heads/master responded with status code 403
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/refs/wip/index/refs/heads/master [403]
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/refs/wip/index/refs/heads/master responded with status code 403
+[-] Finding packs
+[-] Finding objects
+[-] Fetching objects
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/objects/e5/c87aa73fcb1536dddfede926583ef2e0c83f9d [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/objects/99/30221ea79d7877c2b143675f2999080c21e116 [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/objects/00/00000000000000000000000000000000000000 [403]
+[-] https://1753ctf.ams3.digitaloceanspaces.com/g/.git/objects/00/00000000000000000000000000000000000000 responded with status code 403
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/objects/79/5727cd49e0c4f49581151c9ec6bd856650f842 [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/objects/e9/129429abef9b6a7506582931ac0fee0235ca74 [200]
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/objects/12/7627a6875d7ce9079d2f06d21e85623f3ddab6 [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/objects/bb/267f6a5f9435055601fd827b9d863fa50374be [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/objects/77/3f7fd7e46604f6f2ade32da95517a61f9ee2b0 [200]
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+/opt/homebrew/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host '1753ctf.ams3.digitaloceanspaces.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/objects/78/b6991805a7380f6a48c4e7aa4c17966042c320 [200]
+[-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/objects/1d/4d19e62c15d19fc856f32cce895bea5a33eeee [200]
+[-] Running git checkout .
+```
