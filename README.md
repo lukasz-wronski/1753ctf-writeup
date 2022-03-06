@@ -381,3 +381,40 @@ zespol.html
 ```
 
 z czego oczywiście jeden z plików zawiera naszą flagę. Wywołując podobny fragment kodu php jak poprzednio, ale używając cata możemy odczytać zawartość pliku this_is_the_file_containing_our_flag.txt i otrzymać flagę.
+
+### Gildia internetowych troli
+
+W zadaniu oprócz linka do pliku index.html w którym znajdziemy wyedytowaną flagę otrzymujemy również plik z logiem z programu dirb:
+
+```
+---
+
+DIRB v2.22  
+By The Dark Raver
+
+---
+
+START_TIME: Sun Feb 27 12:44:34 2022
+URL_BASE: https://1753ctf.ams3.digitaloceanspaces.com/g/
+
+---
+
+GENERATED WORDS: 4612
+
+---- Scanning URL: https://1753ctf.ams3.digitaloceanspaces.com/g/ ----
+
+- https://1753ctf.ams3.digitaloceanspaces.com/g/.git/HEAD (CODE:200|SIZE:23)  
+  (!) WARNING: All responses for this directory seem to be CODE = 403.  
+   (Use mode '-w' if you want to scan it anyway)
+
+---
+
+END_TIME: Sun Feb 27 12:44:43 2022
+DOWNLOADED: 109 - FOUND: 1
+```
+
+Wynika z niego nie mniej nie więciej to, że ktoś oprócz pliku ze stroną na hosting wrzucił także folder .git, który prawdopodobnie zawiera coś interesującego. 
+
+Można by się pokusić o ręczne pobieranie kolejnych plików, szczególnie jeżeli znamy strukturę plików tego systemu kontroli wersji. Pliki z indeksami zawierają wtedy hashe potrzebne do odgadnięcia nazw plików znajdujących się w folderze objects, zawierających obecne i historyczne wersje plików źródłowych. My jednak skorzystamy z prostszego rozwiązania czyli automatycznego narzędzia git-dumper.
+
+https://github.com/arthaud/git-dumper
