@@ -243,7 +243,7 @@ Tutaj musimy być trochę kreatywni. Możemy np. przypisać sobie fragmenty nied
 ; a=/pwn/articles/flag && b=a.txt && cat $a$b
 ```
 
-W trakcie CTFa okazało się, że można jeszcze prościej bo cat akceptuje różne znaki specjalne wśród których poza zakazaną gwiazdką jest także znak zapytania. Flagę mogliśmy więc otrzymać wpisując również na przykład:
+W trakcie CTFa okazało się, że można jeszcze prościej bo cat akceptuje różne znaki specjalne wśród których poza zakazaną gwiazdką jest także znak zapytania. Jak pokazał mi Lasq mogliśmy więc otrzymać wpisując również na przykład:
 
 ```bash
 fl?ga.txt
