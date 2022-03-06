@@ -22,6 +22,7 @@
 
 ### MISC
 
+- [Kontrola poczytalności](#kontrola-poczytalności)
 - [Śmieszna maupa](#śmieszna-maupa)
 - [Śmieszne zagadki](#śmieszne-zagadki)
 
@@ -596,6 +597,10 @@ Dzięki niemu w folderze dump odtworzone zostanie repozytorium o które nam chod
 git log -p -- index.html
 ```
 ## MISC
+
+### Kontrola poczytalności
+
+Bardzo proste zadanie, wystarczyło się włamać emacsem przez sendmail, ominąć potrójną ścianę ognia i z takiego oto pożaru uratować pierwszą flagę.
 
 ### Śmieszna maupa
 
