@@ -625,6 +625,7 @@ Odpowiedzi 7, 3, 1, 6, 9, 8, 6, 3, 1... Razem tworzą liczbę która wygląda ja
 
 > Dodzwonili się Państwo do firmy Twoja Fotowoltaika na Twoim Dachu Spółka Akcyjna z Ograniczoną Odpowiedzialnością. Państwa dane przetwarzane są zgodnie z RODO. Nasza infolinia czynna jest w dni robocze o godzinie 17:53. Zapraszamy do kontaktu w godzinach urzędowania infolinii. 31 37 35 33 63 7b 73 6f 62 69 65 5f 72 61 79 7d
 
-Tajny szyfr na końcu wiadomości to heksadecymalnie zapisana flaga.
+Tajny szyfr na końcu wiadomości to heksadecymalnie zapisana flaga. Lol.
 
-### Dziękuję bardzo wszystkim za uczestnictwo!
+## Dziękuję bardzo wszystkim za uczestnictwo ❤️
+### Pamiętajcie o wypełnieniu ankiety https://forms.gle/ZwVpzT6joD7TtPScA
