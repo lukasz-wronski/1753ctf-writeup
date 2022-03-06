@@ -584,3 +584,9 @@ Wywołanie jest dosyć proste:
 [-] Fetching https://1753ctf.ams3.digitaloceanspaces.com/g/.git/objects/1d/4d19e62c15d19fc856f32cce895bea5a33eeee [200]
 [-] Running git checkout .
 ```
+
+Dzięki niemu w folderze dump odtworzone zostanie repozytorium o które nam chodzi. Teraz wystarczy, że wyświetlimy listę zmian na pliku index.html, aby przeczytać flagę która kiedyś tam była, ale została zamazana.
+
+```bash
+git log -p -- index.html
+```
